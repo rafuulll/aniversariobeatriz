@@ -48,7 +48,7 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
-      padding: 60px 20px;
+      padding: 20px; /* Reduzido de 60px para diminuir o espaço no topo */
       text-align: center;
     }
 
@@ -78,7 +78,7 @@
       100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
     }
 
-    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; margin-top: -40px; } /* Ajuste fino para subir o texto */
 
     .hero-eyebrow {
       font-family: 'Dancing Script', cursive;
@@ -116,7 +116,7 @@
 
     .scroll-hint {
       position: absolute;
-      bottom: 30px;
+      bottom: 40px; /* Aumentado levemente para não colar no rodapé do celular */
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -126,15 +126,16 @@
       opacity: 0;
       animation: fadeUp 1s ease forwards 1.5s;
       z-index: 2;
+      width: 100%; /* Garante que o alinhamento central funcione melhor */
     }
     .scroll-hint span {
       font-family: 'Dancing Script', cursive;
-      font-size: 0.9rem;
+      font-size: 1.1rem; /* Um pouco maior para leitura no mobile */
       color: var(--gold);
     }
     .scroll-arrow {
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       border-right: 2px solid var(--gold);
       border-bottom: 2px solid var(--gold);
       transform: rotate(45deg);
@@ -255,18 +256,8 @@
       max-width: 720px;
       margin: 0 auto;
     }
-    .carta-wrapper::before {
-      content: '"';
-      font-family: 'Playfair Display', serif;
-      font-size: 12rem;
-      color: var(--blush);
-      position: absolute;
-      top: -30px;
-      left: 20px;
-      line-height: 1;
-      pointer-events: none;
-      z-index: 0;
-    }
+    /* Removido o .carta-wrapper::before que criava as aspas gigantes */
+
     .carta-text {
       position: relative;
       z-index: 1;
@@ -312,7 +303,7 @@
       position: relative;
       border: 1px solid #ead9c3;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer; /* Adicionado para indicar clique */
+      cursor: pointer;
     }
     .foto-slot:hover {
       transform: scale(1.03);
@@ -326,7 +317,7 @@
       display: block;
     }
 
-    /* ── FUNCIONALIDADE DE ABRIR FOTO (Lightbox) ── */
+    /* ── LIGHTBOX ── */
     #lightbox {
       position: fixed;
       inset: 0;
@@ -346,29 +337,6 @@
     }
     #lightbox.active { display: flex; }
 
-    /* placeholder quando não há imagem */
-    .foto-slot .placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      color: #c2a87a;
-    }
-    .foto-slot .placeholder svg {
-      width: 28px;
-      height: 28px;
-      opacity: 0.5;
-    }
-    .foto-slot .placeholder span {
-      font-size: 0.7rem;
-      opacity: 0.6;
-      font-style: italic;
-    }
-
-    /* foto especial maior (posições 1, 10, 19, 28, 37) */
     .foto-slot.destaque {
       grid-column: span 2;
       grid-row: span 2;
@@ -411,7 +379,6 @@
       font-style: italic;
     }
 
-    /* ── SCROLL REVEAL ── */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -422,7 +389,6 @@
       transform: translateY(0);
     }
 
-    /* ── SEPARADOR DECORATIVO ── */
     .ornament {
       text-align: center;
       font-size: 1.2rem;
@@ -437,9 +403,9 @@
 <body>
   
   <audio id="musica" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-  Seu navegador não suporta o elemento de áudio.
-</audio>
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
 
   <div id="lightbox"><img src="" alt=""></div>
 
@@ -449,7 +415,7 @@
     <div class="hero-content">
       <span class="hero-eyebrow">✦ Para a Beatriz</span>
       <h1 class="hero-title">Feliz<br />Aniversário</h1>
-      <p class="hero-sub"><br>A pessoa mais especial da minha vida ❤️</p>
+      <p class="hero-sub">A pessoa mais especial da minha vida ❤️</p>
     </div>
     <div class="scroll-hint">
       <span>continue</span>
@@ -573,7 +539,7 @@ EU TE AMO MUITO BEATRIZ!!!</p>
         audio.play();
     }, { once: true });
 
-    // ── LÓGICA PARA ABRIR A FOTO ──
+    // LIGHTBOX
     const lb = document.getElementById('lightbox');
     const lbImg = lb.querySelector('img');
     
