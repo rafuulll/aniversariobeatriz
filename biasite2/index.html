@@ -48,7 +48,7 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
-      padding: 20px; /* Reduzido de 60px para diminuir o espaço no topo */
+      padding: 0 20px; /* Removido padding vertical */
       text-align: center;
     }
 
@@ -78,7 +78,12 @@
       100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
     }
 
-    .hero-content { position: relative; z-index: 2; max-width: 700px; margin-top: -40px; } /* Ajuste fino para subir o texto */
+    .hero-content { 
+      position: relative; 
+      z-index: 2; 
+      max-width: 700px; 
+      margin-top: -15vh; /* Ajuste para subir bem o conteúdo no mobile */
+    }
 
     .hero-eyebrow {
       font-family: 'Dancing Script', cursive;
@@ -114,38 +119,6 @@
       animation: fadeUp 1s ease forwards 0.9s;
     }
 
-    .scroll-hint {
-      position: absolute;
-      bottom: 40px; /* Aumentado levemente para não colar no rodapé do celular */
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 1.5s;
-      z-index: 2;
-      width: 100%; /* Garante que o alinhamento central funcione melhor */
-    }
-    .scroll-hint span {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.1rem; /* Um pouco maior para leitura no mobile */
-      color: var(--gold);
-    }
-    .scroll-arrow {
-      width: 15px;
-      height: 15px;
-      border-right: 2px solid var(--gold);
-      border-bottom: 2px solid var(--gold);
-      transform: rotate(45deg);
-      animation: bounce 1.5s ease infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: rotate(45deg) translateY(0); }
-      50%       { transform: rotate(45deg) translateY(6px); }
-    }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -156,16 +129,6 @@
       padding: 80px 20px;
       max-width: 900px;
       margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.1rem;
-      color: var(--gold);
-      text-align: center;
-      display: block;
-      margin-bottom: 10px;
-      letter-spacing: 0.05em;
     }
 
     .section-title {
@@ -185,66 +148,6 @@
       margin: 14px auto 0;
     }
 
-    /* ── DIVIDER ── */
-    .divider {
-      text-align: center;
-      font-size: 1.5rem;
-      padding: 10px 0 0;
-      opacity: 0.35;
-      letter-spacing: 1rem;
-    }
-
-    /* ── MOTIVOS ── */
-    .motivos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .motivo-card {
-      background: white;
-      border: 1px solid #ead9c3;
-      border-radius: 16px;
-      padding: 24px 22px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    .motivo-card.visible {
-      animation: fadeUp 0.6s ease forwards;
-    }
-    .motivo-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(42,31,14,0.1);
-    }
-    .motivo-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold-light), var(--pink));
-    }
-    .motivo-icon {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      display: block;
-    }
-    .motivo-titulo {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--dark);
-      margin-bottom: 6px;
-    }
-    .motivo-desc {
-      font-size: 0.88rem;
-      color: var(--mid);
-      line-height: 1.6;
-      font-style: italic;
-    }
-
     /* ── CARTA ── */
     .carta-wrapper {
       background: white;
@@ -256,7 +159,6 @@
       max-width: 720px;
       margin: 0 auto;
     }
-    /* Removido o .carta-wrapper::before que criava as aspas gigantes */
 
     .carta-text {
       position: relative;
@@ -416,10 +318,6 @@
       <span class="hero-eyebrow">✦ Para a Beatriz</span>
       <h1 class="hero-title">Feliz<br />Aniversário</h1>
       <p class="hero-sub">A pessoa mais especial da minha vida ❤️</p>
-    </div>
-    <div class="scroll-hint">
-      <span>continue</span>
-      <div class="scroll-arrow"></div>
     </div>
   </div>
 
